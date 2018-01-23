@@ -1,0 +1,29 @@
+{
+  "name": "serve-static-with-parameters",
+  "version": "1.0.0",
+  "description": "Serve files even though the file names contain url paramers (ex: style.css?ver=123)",
+  "main": "serve-static-with-parameters.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmergentIdeas/serve-static-with-parameters.git"
+  },
+  "keywords": [
+    "static",
+    "serve",
+    "file",
+    "site",
+    "mirror"
+  ],
+  "author": "Dan Kolz (Emergent Ideas)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmergentIdeas/serve-static-with-parameters/issues"
+  },
+  "homepage": "https://github.com/EmergentIdeas/serve-static-with-parameters#readme",
+  "dependencies": {
+    "mime-types": "^2.1.17"
+  }
+}
