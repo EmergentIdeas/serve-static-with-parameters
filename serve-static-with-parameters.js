@@ -1,4 +1,4 @@
-const path = require('path')
+const pathtool = require('path')
 const findWithStarting = require('./find-file-starting-with')
 const fs = require('fs')
 const mimeTypes = require('mime-types')
@@ -9,14 +9,19 @@ let serveFile = (path, res) => {
 	if(qIndex > 0) {
 		fileBaseName = fileBaseName.substring(0, qIndex)
 	}
-	res.set('Content-Type',  mimeTypes.lookup(fileBaseName) || 'text/plain')
+	
+	let mimeType = mimeTypes.lookup(fileBaseName) || 'text/plain'
+	if(pathtool.extname(fileBaseName) == '') {
+		mimeType = "text/html"
+	}
+	res.set('Content-Type',  mimeType)
 	fs.createReadStream(path).pipe(res)	
 }
 
 const createStaticServer = function(pathRoot) {
 	return function(req, res, next) {
 		
-		let fn = path.join(pathRoot, req.url)
+		let fn = pathtool.join(pathRoot, req.url)
 		if(fn.indexOf(pathRoot) != 0) {
 			// kick out anything which is a security problem
 			return next()
@@ -31,6 +36,11 @@ const createStaticServer = function(pathRoot) {
 				}
 				else {
 					// This exists so we'll just continue. The normal static file server should pick this up
+					if(pathtool.extname(fn) == '') {
+						// however, if it has no extension, make sure we mark it as html
+						res.set('Content-Type',  'text/html')
+					}
+					
 					next()
 				}
 			}

@@ -1,6 +1,6 @@
 {
   "name": "serve-static-with-parameters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Serve files even though the file names contain url paramers (ex: style.css?ver=123)",
   "main": "serve-static-with-parameters.js",
   "scripts": {
